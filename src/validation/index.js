@@ -11,7 +11,7 @@ const payloadItem = joi.object({
   episodeCount: joi.number(),
   genre: joi.string(),
   image: joi.object({
-    showImage: joi.string(),
+    showImage: joi.string().required(),
   }),
   language: joi.string(),
   nextEpisode: joi
