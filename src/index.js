@@ -7,8 +7,9 @@ import { logger } from './services';
 import { createRouter as createApiRoute } from './route';
 
 const app = new Koa();
-const apiRouter = createApiRoute({ prefix: '/api' });
+const apiRouter = createApiRoute({ prefix: '' });
 const globalMiddlewares = [bodyParser()];
+if (process.env.NODE_ENV === 'production') globalMiddlewares.push(cors());
 
 app.use(compose([...globalMiddlewares, apiRouter.allowedMethods(), apiRouter.routes()]));
 
