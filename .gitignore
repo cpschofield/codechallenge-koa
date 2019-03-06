@@ -25,11 +25,3 @@ node_modules/
 
 # editor specific files
 .vscode/
-
-# Elastic Beanstalk Files
-.elasticbeanstalk/*
-!.elasticbeanstalk/*.cfg.yml
-!.elasticbeanstalk/*.global.yml
-
-# Payload example
-payload.json

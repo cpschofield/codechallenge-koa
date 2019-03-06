@@ -1,5 +1,4 @@
 import Koa from 'koa';
-import cors from 'koa-cors';
 import bodyParser from 'koa-bodyparser';
 import error from 'koa-json-error';
 import compose from 'koa-compose';
@@ -16,11 +15,10 @@ const onError = (err) => {
 const app = new Koa();
 const apiRouter = createApiRoute({ prefix: '' });
 const globalMiddlewares = [errorHandler(), error(onError), bodyParser()];
-if (process.env.NODE_ENV === 'production') globalMiddlewares.push(cors());
 
 app.use(compose([...globalMiddlewares, apiRouter.allowedMethods(), apiRouter.routes()]));
 
-const listenPort = process.env.NODE_ENV === 'production' ? 80 : config.app.port;
+const listenPort = process.env.NODE_ENV === 'production' ? process.env.PORT : config.app.port;
 const appListener = app.listen(listenPort, () => {
   logger.info(`App listening on port ${listenPort}!`);
 });
