@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "",
-    "dev": "nodemon --exec babel-node index.js",
+    "dev": "nodemon --exec babel-node ./src/index.js",
     "debug": "",
     "prebuild": "rm -rf ./dist",
     "build": "babel index.js -d dist && babel src -d dist/src ",
@@ -17,14 +17,18 @@
   "license": "ISC",
   "dependencies": {
     "aws-sdk": "^2.411.0",
+    "dotenv": "^6.2.0",
     "expect.js": "^0.3.1",
+    "joi": "^14.3.1",
     "koa": "^2.7.0",
     "koa-bodyparser": "^4.2.1",
     "koa-compose": "^4.1.0",
+    "koa-cors": "0.0.16",
     "koa-logger": "^3.2.0",
     "koa-router": "^7.4.0",
     "mocha": "^6.0.2",
-    "moment": "^2.24.0"
+    "moment": "^2.24.0",
+    "winston": "^3.2.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
