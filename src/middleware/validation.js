@@ -1,4 +1,3 @@
-import { Context } from 'koa';
 import { logger } from '../services';
 
 export const validateRequestBody = validator => async (ctx, next) => {

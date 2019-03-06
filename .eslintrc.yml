@@ -1,6 +1,7 @@
 env:
   browser: false
   es6: true
+  jest: true
 extends: airbnb-base
 globals:
   Atomics: readonly
@@ -8,5 +9,6 @@ globals:
 parserOptions:
   ecmaVersion: 2018
   sourceType: module
-rules: {}
+rules:
+  import/prefer-default-export: 0
 plugins: ["jest"]

@@ -4,13 +4,9 @@ import { validateRequestBody } from '../middleware';
 import { validateRequestJSON } from '../validation';
 
 const attachRoutes = (router) => {
-  router.get(
-    '/hello',
-    async (ctx, next) => await next(),
-    async (ctx) => {
-      ctx.body = { response: 'hello world' };
-    },
-  );
+  router.get('/hello', async (ctx) => {
+    ctx.body = { response: 'hello world' };
+  });
   router.post('/', validateRequestBody(validateRequestJSON), api.mapShowBriefResponse);
   return router;
 };

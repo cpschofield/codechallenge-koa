@@ -1,4 +1,3 @@
-import * as Koa from 'koa';
 import { logger } from '../services';
 
 export const errorHandler = () => async (ctx, next) => {
