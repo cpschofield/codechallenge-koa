@@ -4,31 +4,28 @@
   "description": "coding challenge solution for channel 9",
   "main": "index.js",
   "scripts": {
-    "start": "",
+    "prestart": "npm run build",
+    "start": "node dist/src",
     "dev": "nodemon --exec babel-node ./src/index.js",
-    "debug": "",
-    "prebuild": "rm -rf ./dist",
-    "build": "babel src/index.js -d dist && babel src -d dist/src ",
-    "pretest": "npm run build && npm run lint",
+    "prebuild": "npm run test",
+    "build": "babel src/index.js -d dist/src && babel src -d dist/src ",
+    "pretest": "npm run clean && npm run lint",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "clean": "rm -rf ./dist"
   },
   "author": "Chris Schofield",
   "license": "ISC",
   "dependencies": {
     "aws-sdk": "^2.411.0",
     "dotenv": "^6.2.0",
-    "expect.js": "^0.3.1",
     "joi": "^14.3.1",
     "koa": "^2.7.0",
     "koa-bodyparser": "^4.2.1",
     "koa-compose": "^4.1.0",
     "koa-cors": "0.0.16",
     "koa-json-error": "^3.1.2",
-    "koa-logger": "^3.2.0",
     "koa-router": "^7.4.0",
-    "mocha": "^6.0.2",
-    "moment": "^2.24.0",
     "winston": "^3.2.1"
   },
   "devDependencies": {
