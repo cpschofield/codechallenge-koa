@@ -24,6 +24,7 @@
     "koa-bodyparser": "^4.2.1",
     "koa-compose": "^4.1.0",
     "koa-cors": "0.0.16",
+    "koa-json-error": "^3.1.2",
     "koa-logger": "^3.2.0",
     "koa-router": "^7.4.0",
     "mocha": "^6.0.2",
