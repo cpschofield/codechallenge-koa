@@ -1,5 +1,7 @@
 import Router from 'koa-router';
 import * as api from '../api';
+import { validateRequestBody } from '../middleware';
+import { validateRequestJSON } from '../validation';
 
 const attachRoutes = (router) => {
   router.get(
@@ -9,7 +11,7 @@ const attachRoutes = (router) => {
       ctx.body = { response: 'hello world' };
     },
   );
-  router.post('/', api.mapShowBriefResponse);
+  router.post('/', validateRequestBody(validateRequestJSON), api.mapShowBriefResponse);
   return router;
 };
 
