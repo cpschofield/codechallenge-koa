@@ -1,4 +1,4 @@
-import { logger } from '../services';
+import { logger } from '../service';
 
 export const validateRequestBody = validator => async (ctx, next) => {
   logger.info('validation');

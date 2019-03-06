@@ -1,4 +1,4 @@
-import { logger } from '../services';
+import { logger } from '../service';
 
 export const mapShowBriefResponse = async (ctx) => {
   logger.info('mapShowBriefResponse');
@@ -9,6 +9,6 @@ export const mapShowBriefResponse = async (ctx) => {
       slug: record.slug,
       title: record.title,
     }));
-  ctx.body = validRecords;
+  ctx.body = { response: validRecords };
   ctx.status = 200;
 };

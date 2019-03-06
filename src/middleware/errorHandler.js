@@ -1,4 +1,4 @@
-import { logger } from '../services';
+import { logger } from '../service';
 
 export const errorHandler = () => async (ctx, next) => {
   try {

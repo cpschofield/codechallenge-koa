@@ -8,9 +8,9 @@
     "dev": "nodemon --exec babel-node ./src/index.js",
     "debug": "",
     "prebuild": "rm -rf ./dist",
-    "build": "babel index.js -d dist && babel src -d dist/src ",
+    "build": "babel src/index.js -d dist && babel src -d dist/src ",
     "pretest": "npm run build && npm run lint",
-    "test": "jest --config",
+    "test": "jest",
     "lint": "eslint ."
   },
   "author": "Chris Schofield",
