@@ -1,4 +1,5 @@
 import * as joi from 'joi';
+import { logger } from '../service';
 
 const seasonItem = joi.object({
   slug: joi.string(),
@@ -49,6 +50,10 @@ const requestJsonFormatRule = joi
 
 export const validateRequestJSON = async (obj) => {
   const res = joi.validate(obj, requestJsonFormatRule);
-  if (res.error) res.error.message = 'Could not decode request: JSON parsing failed';
+  if (res.error) {
+    logger.info(res.error.message);
+    res.error.message = 'Could not decode request: JSON parsing failed';
+  }
+
   return res;
 };

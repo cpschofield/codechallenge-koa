@@ -13,11 +13,6 @@ afterAll(() => {
 
 // run tests against the available routes
 describe('API route tests', async () => {
-  test("calls /ping route expects 404 response & respone to contain 'Not Found'", async () => {
-    const response = await request(app).get('/ping');
-    expect(response.status).toEqual(404);
-    expect(response.text).toContain('Not Found');
-  });
   test("calls /hello route expects 200 response & respone to contain 'hello world'", async () => {
     const response = await request(app).get('/hello');
     expect(response.status).toEqual(200);
@@ -46,6 +41,15 @@ describe('API route tests', async () => {
     const response = await request(app)
       .post('/')
       .send('{totalRecords: 75}')
+      .set('Content-Type', 'application/json');
+    expect(response.status).toEqual(400);
+    expect(typeof response.text).toBe('string');
+    expect(typeof JSON.parse(response.text)).toBe('object');
+  });
+  test('calls / route with empty payload expects 400 response & correct response', async () => {
+    const response = await request(app)
+      .post('/')
+      .send('{payload: [], skip: 0, take: 10, totalRecords: 75 }')
       .set('Content-Type', 'application/json');
     expect(response.status).toEqual(400);
     expect(typeof response.text).toBe('string');

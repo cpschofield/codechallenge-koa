@@ -7,10 +7,7 @@ import { config } from './config';
 import { logger } from './service';
 import { createRouter as createApiRoute } from './route';
 
-const onError = (err) => {
-  if (err.message.includes('in JSON')) return { error: 'Could not decode request: JSON parsing failed' };
-  return { error: err.message };
-};
+const onError = () => ({ error: 'Could not decode request: JSON parsing failed' });
 
 const app = new Koa();
 const apiRouter = createApiRoute({ prefix: '' });
