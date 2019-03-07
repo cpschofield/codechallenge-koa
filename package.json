@@ -4,7 +4,7 @@
   "description": "coding challenge solution for channel 9",
   "main": "index.js",
   "scripts": {
-    "prestart": "npm run build",
+    "postinstall": "npm run build",
     "start": "node dist/src",
     "dev": "nodemon --exec babel-node ./src/index.js",
     "prebuild": "npm run test",
