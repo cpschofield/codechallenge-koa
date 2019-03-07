@@ -42,4 +42,13 @@ describe('API route tests', async () => {
     expect(typeof response.text).toBe('string');
     expect(typeof JSON.parse(response.text)).toBe('object');
   });
+  test("calls / route with json that doesn't meet requirement expects 400 response & correct response", async () => {
+    const response = await request(app)
+      .post('/')
+      .send('{totalRecords: 75}')
+      .set('Content-Type', 'application/json');
+    expect(response.status).toEqual(400);
+    expect(typeof response.text).toBe('string');
+    expect(typeof JSON.parse(response.text)).toBe('object');
+  });
 });

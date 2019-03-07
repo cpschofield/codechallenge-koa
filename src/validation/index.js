@@ -35,11 +35,18 @@ const payloadItem = joi.object({
 
 const requestJsonFormatRule = joi
   .object({
-    payload: joi.array().items(payloadItem),
+    payload: joi
+      .array()
+      .items(payloadItem)
+      .required(),
     skip: joi.number().required(),
     take: joi.number().required(),
     totalRecords: joi.number().required(),
   })
   .required();
 
-export const validateRequestJSON = async obj => joi.validate(obj, requestJsonFormatRule);
+export const validateRequestJSON = async (obj) => {
+  const res = joi.validate(obj, requestJsonFormatRule);
+  if (res.error) res.error.message = 'Could not decode request: JSON parsing failed';
+  return res;
+};
