@@ -36,6 +36,9 @@ describe('API route tests', async () => {
     expect(response.status).toEqual(400);
     expect(typeof response.text).toBe('string');
     expect(typeof JSON.parse(response.text)).toBe('object');
+    expect(JSON.parse(response.text)).toEqual({
+      error: 'Could not decode request: JSON parsing failed',
+    });
   });
   test("calls / route with json that doesn't meet requirement expects 400 response & correct response", async () => {
     const response = await request(app)
@@ -45,6 +48,9 @@ describe('API route tests', async () => {
     expect(response.status).toEqual(400);
     expect(typeof response.text).toBe('string');
     expect(typeof JSON.parse(response.text)).toBe('object');
+    expect(JSON.parse(response.text)).toEqual({
+      error: 'Could not decode request: JSON parsing failed',
+    });
   });
   test('calls / route with empty payload expects 400 response & correct response', async () => {
     const response = await request(app)
@@ -54,5 +60,8 @@ describe('API route tests', async () => {
     expect(response.status).toEqual(400);
     expect(typeof response.text).toBe('string');
     expect(typeof JSON.parse(response.text)).toBe('object');
+    expect(JSON.parse(response.text)).toEqual({
+      error: 'Could not decode request: JSON parsing failed',
+    });
   });
 });
